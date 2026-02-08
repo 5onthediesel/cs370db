@@ -6,6 +6,6 @@ cd /Library/PostgreSQL/18/bin
 pw rubiks
 
 
-% cd /Users/brianweinshenker/Documents/classes/s26/cs370db
-% javac db.java
-% java -cp /Users/brianweinshenker/Documents/classes/s26/cs370db/postgresql-42.7.8.jar:. db
+cd /Users/brianweinshenker/Documents/classes/s26/cs370db
+javac db.java
+java -cp /Users/brianweinshenker/Documents/classes/s26/cs370db/postgresql-42.7.8.jar:. db
