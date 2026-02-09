@@ -19,7 +19,7 @@ class db {
         meta.datetime = d.date;
         meta.latitude = d.lat;
         meta.longitude = -d.lon;
-        meta.altitude = d.alt;
+        meta.altitude = d.alt * 3.280839895;
         meta.gps_flag = (d.lat != null && d.lon != null && d.alt != null);
         meta.sha256 = ImgHash.sha256(f);
         meta.width = ImgDet.getWidth(f);
@@ -38,8 +38,8 @@ class db {
                 id serial primary key,
                 img_hash varchar(64) unique,
                 cloud_uri text not null,
-                filename text,
 
+                filename text,
                 filesize_bytes bigint,
                 width int,
                 height int,
@@ -53,7 +53,7 @@ class db {
             )
         """);
     }
-    
+
     static void insertMeta(Connection conn, Metadata meta) throws SQLException {
         String sql =
             "insert into images (" +

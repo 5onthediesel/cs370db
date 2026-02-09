@@ -1,3 +1,25 @@
+commit af1850d02a3e2e0b3650465d458d52499132379e
+Author: 5onthediesel <weinshenker.brian@gmail.com>
+Date:   Sun Feb 8 14:20:16 2026 -0500
+
+    new file attributes in db, TIFF parsing problem with coords fixed (sorta); ready to use cloud storage
+
+ EXIFParser.java | 10 +++----
+ ImgDet.java     | 12 ++++++++
+ Metadata.java   |  6 ++--
+ README.md       | 86 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++-
+ db.java         | 36 ++++++++++++++++++------
+ 5 files changed, 132 insertions(+), 18 deletions(-)
+
+commit c2845d46d2793a51cf6926867f606239017ccbf7
+Author: 5onthediesel <weinshenker.brian@gmail.com>
+Date:   Sun Feb 8 14:17:50 2026 -0500
+
+    added class to gitignore
+
+ .gitignore | 1 +
+ 1 file changed, 1 insertion(+)
+
 commit 4b82067c61dc6abc98d26496bf5d6dd52b77c8ae
 Author: 5onthediesel <weinshenker.brian@gmail.com>
 Date:   Sun Feb 8 13:04:40 2026 -0500
