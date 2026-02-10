@@ -1,8 +1,8 @@
 package com.example;
 
-import java.io.*;
-import java.nio.*;
-import java.util.*;
+import java.io.RandomAccessFile;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 
 public class EXIFParser {
 
@@ -16,8 +16,11 @@ public class EXIFParser {
     public static ExifData parse(String file) throws Exception {
         RandomAccessFile raf = new RandomAccessFile(file, "r");
 
-        if (raf.readUnsignedShort() != 0xFFD8)
-            throw new RuntimeException("Not JPEG");
+        // Returns empty instead of crashing
+        if (raf.readUnsignedShort() != 0xFFD8) {
+            raf.close();
+            return new ExifData(); 
+        }
 
         int b;
         while ((b = raf.read()) != -1) {
@@ -27,11 +30,14 @@ public class EXIFParser {
                     int len = raf.readUnsignedShort();
                     byte[] exif = new byte[len - 2];
                     raf.readFully(exif);
+                    raf.close();
                     return parseExif(exif);
                 }
             }
         }
-        throw new RuntimeException("No EXIF found");
+        
+        raf.close();
+        return new ExifData(); 
     }
 
     public static ExifData parseExif(byte[] buf) {
