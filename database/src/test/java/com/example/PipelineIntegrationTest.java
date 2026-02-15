@@ -23,7 +23,7 @@ public class PipelineIntegrationTest {
     private static final String BUCKET_NAME = "cs370perc-bucket";
 
     private static final Path TEST_DIR = Paths.get("src", "test", "java", "com", "example");
-    private static final Path ORIGINAL_HEIC = TEST_DIR.resolve("test_image.heic");
+    private static final Path ORIGINAL_HEIC = TEST_DIR.resolve("test_image_2.heic");
 
     @Test
     void endToEnd_withSpecificHeic_copyInTestDir_uploadAsHashDotJpg_insertToDb_andVerify() throws Exception {
@@ -35,7 +35,7 @@ public class PipelineIntegrationTest {
                 "Missing test image at: " + ORIGINAL_HEIC.toAbsolutePath());
 
         Files.createDirectories(TEST_DIR);
-        String tmpHeicName = "test_image_copy_" + UUID.randomUUID() + ".heic";
+        String tmpHeicName = "test_image_2_copy_" + UUID.randomUUID() + ".heic";
         Path tmpHeic = TEST_DIR.resolve(tmpHeicName);
 
         System.out.println("[STEP 1] Copy original -> temp: " + tmpHeic.toAbsolutePath());
